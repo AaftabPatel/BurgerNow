@@ -1,0 +1,484 @@
+:root{
+  --Byellow:rgb(236, 224, 44);
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+::selection {
+  background-color: rgba(137, 43, 226, 0.8); /* Background color of selected text */
+  color: white; /* Text color of selected text */
+}
+/* reset & common styles */
+  body, ul, h1, h2, h3, p, button, a, div{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'suse';
+    letter-spacing: 2px;
+    list-style-type: none;
+    text-decoration: none;
+  }
+  body{
+    background: transparent;
+  }
+
+  button{
+    color: white;
+    padding: 10px 30px;
+    font-size: 1em;
+    background: transparent;
+    border-radius: 50px;
+    border: 1px solid white;
+    margin: 40px auto 0;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.2s ease;
+  }
+  button:hover{
+    background-color: var(--Byellow);
+    color: blueviolet;
+    font-size: 1.1em;
+  }
+
+/*container common style*/
+  .container{
+    max-width: 800px;
+    margin: 2em auto 40px;
+    position: relative;
+    padding: 1em;
+    border-radius: 15px;
+  }
+  .container h3{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .container li{
+    padding: 10px;
+    cursor: pointer;
+  }
+
+/* app container style */
+  .appContainer{
+    position:relative;
+    height: 110vh;
+  }
+
+  .appContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./Images/burgerBg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    filter: brightness(50%);
+    z-index: -1; /* Ensure it is behind the content */
+  }
+
+/* header */
+  header{
+    display: flex;
+    padding: 40px;
+    align-items: center;
+  }
+  header .title{
+    flex-grow: 1;
+    margin-left: 20px;
+    font-size: 0.6em;
+  }
+  header h1{
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+  }
+  header .pizza-svg {
+    width: 80px;
+    overflow: visible;
+    stroke: #fff;
+    stroke-width: 4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+/* lists */
+  .displayGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* This will create 4 equal columns */
+    gap: 20px; /* Adds space between the columns */
+  }
+
+  .categoryHeading{
+    color: var(--Byellow);
+  }
+
+  li span.active{
+    font-weight: bold;
+  }
+  li span.active::before{
+    content: '>';
+    position: relative;
+    top: -2px;
+    margin-right: 6px;
+    transform: scale(0.8, 1);
+    display: inline-block;
+  }
+
+/* pages common style*/
+  .home h2{
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+  .home.container, 
+  .order.container{
+    text-align: center;
+    max-width: 800px;
+  }
+  .home button{
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.6em;
+    border: 3px solid var(--Byellow);
+    margin: 30px 20px;
+  }
+  .order p{
+    margin: 20px auto;
+  }
+
+/* modal */
+  .backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+  .modal{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .modal button{
+    color: #444;
+    border-color: #444;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .modal p{
+    color: #444;
+    font-weight: bold;
+  }
+
+/* loader 
+  .loader{
+    width: 10px;
+    height: 10px;
+    margin: 40px auto;
+    border-radius: 50%;
+    background: #fff;
+  }*/
+
+/* about style */
+.about{
+  display: flex;
+  flex-direction: row;
+  padding: 5em;
+}
+
+.about img{
+  width: 40vw;
+  border-right: 2px solid blueviolet;
+}
+
+.about .aboutContent{
+  position: relative;
+  top: 8em;
+  left: -3em;
+  border-left: 2px solid blueviolet;
+  background-color: white;
+  padding: 2em;
+  width: 25em;
+  height: 25em;
+}
+
+.about .aboutContent h1{
+  border-bottom: 2px solid var(--gYellow);
+}
+
+.aboutInfo{
+  color: blueviolet;
+}
+h1.aboutHeading{
+  color: var(--Byellow);
+  text-decoration: underline;
+  font-size: 2em;
+  position: relative;
+}
+
+/* Features part */
+h1.featuresHeading{
+  text-align: center;
+  border-bottom: 2px solid var(--gYellow);
+  background-color: blueviolet;
+  color: var(--Byellow);
+  padding: 1em;
+}
+.features{
+  background: url('./Images/burgerBg2.jpg') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  padding: 3em;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5em;
+}
+
+.featuresCard{
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 1.1em;
+  border: 2px solid var(--Byellow);
+  padding: 1em;
+  border-radius: 2em;
+  text-align: center;
+  width: 22vw;
+}
+
+.featuresCard:first-child{border-radius: 2em 0em 2em 0em;}
+.featuresCard:last-child{border-radius: 0em 2em 0em 2em;}
+
+.featuresCard i{
+  font-size: 6em;
+  padding: 0.3em;
+  color: var(--Byellow);
+}
+.featuresCard h2{
+  padding: 0.5em;
+  color: white;
+}
+.featuresCard p{
+  padding: 0.5em;
+  color: var(--Byellow);
+}
+.ybtn{
+  border: 2px solid blueviolet;
+}
+
+/* contact part */
+.contactUs {
+  background: url('./Images/burgerBg3.jpg') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 83.8vh;
+}
+
+.contactForm {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(9px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 35vw;
+  text-align: center;
+  color: blueviolet;
+}
+
+.contactForm h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid blueviolet;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  color: blueviolet;
+  margin-bottom: 5px;
+}
+
+.input-group input , textarea{
+  width: 34vw;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  color: blueviolet;
+  font-size: 14px;
+}
+
+.input-group input::placeholder, textarea::placeholder{
+  color: #fff;
+}
+
+.contactForm button {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: blueviolet;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contactForm button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+  color: var(--gBlue);
+}
+
+/* our cooks part */
+h1.cookHeading{
+  text-align: center;
+  border-bottom: 2px solid var(--gYellow);
+  color: var(--gBlue);
+  padding: 1em;
+}
+.cookBack{
+  text-align: center;
+  font-size: 1.2em;
+}
+.cook{
+  display: flex;
+  padding: 1em;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3em;
+}
+
+.cookCard{
+  background-color: white;
+  font-size: 1.1em;
+  padding: 2em;
+  text-align: center;
+  width: 20vw;
+}
+
+.cookCard .cookImg{
+  height: 23em;
+  width: 18em;
+}
+
+.cookInfo{
+  background-color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  padding: 1em;
+  cursor: pointer;
+  top: -5.3em;
+  width: 16em;
+  color: white;
+  text-align: center;
+}
+
+.cookInfo:hover{
+  color: var(--gYellow);
+}
+
+.cookBtn{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  margin-top: -1em;
+}
+.cookBtn:hover{
+  transform: translate(-50%, -80%);
+}
+
+
+/*Footer part style*/
+  .footer {
+    /*background: url('./Images/burgerBg4.jpg') no-repeat center;*/
+    background-color: var(--Byellow);
+    background-size: cover;
+    padding: 2em 0;
+    border-top: 2px solid var(--gYellow);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .footer-section {
+    margin: 1em;
+    max-width: 300px;
+  }
+
+  .footer-section h3 {
+    font-size: 1.5em;
+    color: blueviolet; 
+    margin-bottom: 0.75em;
+  }
+
+  .footer-section p,
+  .footer-section ul {
+    font-size: 1.1em;
+    color: blueviolet;
+    line-height: 1.5;
+    margin-bottom: 0.75em;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5em;
+  }
+
+  .footer-section ul li a {
+    color: blueviolet;
+    text-decoration: none;
+    transition: color 0.1s;
+  }
+
+  .footer-section ul li a:hover {
+    color: white;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+    color: blueviolet;
+    font-size: 1.5em;
+    transition: color 0.3s;
+  }
+
+  .footer i{
+    color: blueviolet;
+  }
+  .footer i:hover{
+    color: var(--gYellow);
+  }
+
+  .footer-bottom {
+    margin-top: 2em;
+    border-top: 1px solid #444;
+    padding-top: 1em;
+    color: blueviolet;
+    font-size: 0.9em;
+  }
